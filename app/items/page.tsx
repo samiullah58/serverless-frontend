@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { Navbar } from "@/components/navbar"
+import { useAuth } from "@/components/auth-provider"
 import { Loader2, Plus, Pencil, Trash2, Eye } from "lucide-react"
 import {
   AlertDialog,
@@ -28,6 +29,7 @@ export default function ItemsPage() {
   const [deleting, setDeleting] = useState(false)
   const { toast } = useToast()
   const router = useRouter()
+  const { user } = useAuth()
 
   useEffect(() => {
     fetchItems()
@@ -88,6 +90,11 @@ export default function ItemsPage() {
       <div className="container mx-auto py-8 px-4">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
+            {user && (
+              <p className="text-sm text-muted-foreground mb-2">
+                Welcome, {user.username.split("@")[0]}
+              </p>
+            )}
             <h1 className="text-3xl font-bold">Items</h1>
             <p className="text-muted-foreground mt-1">Manage your items collection</p>
           </div>

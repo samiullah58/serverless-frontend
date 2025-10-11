@@ -99,7 +99,7 @@ export default function SignupPage() {
                 disabled={loading}
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 mb-4">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input
                 id="confirmPassword"

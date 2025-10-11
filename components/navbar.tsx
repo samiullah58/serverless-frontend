@@ -16,7 +16,7 @@ export function Navbar() {
         <div className="flex items-center gap-6">
           <Link href="/items" className="flex items-center gap-2 font-semibold text-lg">
             <Package className="h-6 w-6" />
-            Items Manager
+            Items CRUD
           </Link>
           <Link
             href="/items"
@@ -26,7 +26,6 @@ export function Navbar() {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-sm text-muted-foreground">Welcome, {user.username}</span>
           <Button variant="outline" size="sm" onClick={signOut} disabled={logoutLoading}>
             {logoutLoading ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
