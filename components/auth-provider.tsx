@@ -26,7 +26,7 @@ const AuthContext = createContext<AuthContextType>({
 
 export const useAuth = () => useContext(AuthContext)
 
-const publicPaths = ["/login", "/signup"]
+const publicPaths = ["/login", "/signup", "/verify"]
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)

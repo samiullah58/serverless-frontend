@@ -42,7 +42,7 @@ export default function SignupPage() {
         title: "Success",
         description: "Account created! Please check your email to verify your account.",
       })
-      router.push("/login")
+      router.push(`/verify?username=${encodeURIComponent(username)}`)
     } catch (error: any) {
       toast({
         title: "Error",

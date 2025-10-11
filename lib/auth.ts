@@ -113,6 +113,50 @@ export const signIn = (username: string, password: string): Promise<AuthUser> =>
 }
 
 // ---------------------------
+// Confirm sign up (OTP verification)
+// ---------------------------
+export const confirmSignUp = (username: string, code: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    try {
+      const pool = getPool()
+      const cognitoUser = new CognitoUser({
+        Username: username,
+        Pool: pool
+      })
+
+      cognitoUser.confirmRegistration(code, true, (err, result) => {
+        if (err) return reject(err)
+        resolve(result)
+      })
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+// ---------------------------
+// Resend confirmation code
+// ---------------------------
+export const resendConfirmationCode = (username: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    try {
+      const pool = getPool()
+      const cognitoUser = new CognitoUser({
+        Username: username,
+        Pool: pool
+      })
+
+      cognitoUser.resendConfirmationCode((err, result) => {
+        if (err) return reject(err)
+        resolve(result)
+      })
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+// ---------------------------
 // Sign out
 // ---------------------------
 export const signOut = (): void => {
